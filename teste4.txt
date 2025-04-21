@@ -1,0 +1,9 @@
+8
+0
+1abc
+(\neg 0)
+(\wedge 0 1)
+(\vee 0 1abc)
+(\rightarrow 0 1)
+(\rightarrow (\neg 0) (\wedge 1 2))
+(\leftrightarrow 0ab (\rightarrow 1 2))

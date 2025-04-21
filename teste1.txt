@@ -1,0 +1,6 @@
+5
+(\neg p0)
+(\wedge p1 p2)
+(\rightarrow (\wedge p1 p2) p3)
+true
+(\leftrightarrow (\neg p0) false)

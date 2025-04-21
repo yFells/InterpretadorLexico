@@ -1,0 +1,8 @@
+7
+(\vee p0 p1)
+(\neg (\wedge p0 p1))
+(\rightarrow (\neg p0)(\vee p1 p2))
+(\leftrightarrow (\wedge p0 p1)(\rightarrow p2 p3))
+p0
+invalido\neg
+(\wedge p0)

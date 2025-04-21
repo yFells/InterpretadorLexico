@@ -1,0 +1,11 @@
+10
+false
+true
+p0
+p123abc
+(\neg p0)
+(\neg true)
+(\wedge p0 p1)
+(\vee true false)
+(\rightarrow (\neg p0) (\wedge p1 p2))
+(\leftrightarrow (\vee p1 p2) (\rightarrow (\neg p3) false))
