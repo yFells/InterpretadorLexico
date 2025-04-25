@@ -27,18 +27,9 @@ import re
 
 
 class AnalisadorLexico:
-    """
-    Classe que implementa o analisador léxico para a linguagem de lógica proposicional.
-    Simula uma máquina de estados finitos para reconhecer os tokens da linguagem.
-    """
     
     def __init__(self, expressao):
-        """
-        Inicializa o analisador léxico com a expressão a ser analisada.
-        
-        Args:
-            expressao (str): A expressão a ser analisada
-        """
+
         # Substitui qualquer dupla barra \\ por barra única \
         # Isso é necessário porque em Python a barra invertida é um caractere de escape
         self.expressao = re.sub(r'\\\\', r'\\', expressao)
@@ -48,10 +39,6 @@ class AnalisadorLexico:
         self.proximo_token()
     
     def proximo_token(self):
-        """
-        Avança para o próximo token da expressão.
-        Atualiza token_atual e valor_atual com o próximo token encontrado.
-        """
         # Ignora espaços em branco
         while self.posicao < len(self.expressao) and self.expressao[self.posicao].isspace():
             self.posicao += 1
@@ -166,27 +153,14 @@ class AnalisadorLexico:
 
 
 class Parser:
-    """
-    Classe que implementa o analisador sintático LL(1) para a linguagem de lógica proposicional.
-    Verifica se a sequência de tokens produzida pelo analisador léxico segue a gramática especificada.
-    """
+
     
     def __init__(self, lexico):
-        """
-        Inicializa o parser com o analisador léxico fornecido.
-        
-        Args:
-            lexico (AnalisadorLexico): O analisador léxico a ser usado
-        """
+
         self.lexico = lexico
         
     def parse(self):
-        """
-        Inicia a análise sintática a partir da regra inicial (FORMULA).
-        
-        Returns:
-            bool: True se a expressão for válida, False caso contrário
-        """
+
         resultado = self.formula()
         
         # Após processar toda a fórmula, precisamos garantir que chegamos ao fim da entrada
@@ -195,27 +169,14 @@ class Parser:
         return False
     
     def consumir(self, token_esperado):
-        """
-        Consome um token se ele corresponder ao esperado.
-        
-        Args:
-            token_esperado (str): O token que se espera encontrar
-            
-        Returns:
-            bool: True se o token foi consumido, False caso contrário
-        """
+
         if self.lexico.token_atual == token_esperado:
             self.lexico.proximo_token()
             return True
         return False
     
     def formula(self):
-        """
-        Implementa a regra: FORMULA = CONSTANTE | PROPOSICAO | FORMULAUNARIA | FORMULABINARIA
-        
-        Returns:
-            bool: True se a fórmula for válida, False caso contrário
-        """
+
         # Caso: CONSTANTE (true ou false)
         if self.lexico.token_atual == 'CONSTANTE':
             return self.consumir('CONSTANTE')
@@ -265,13 +226,7 @@ class Parser:
 
 
 def print_tokens(expressao):
-    """
-    Função auxiliar para imprimir todos os tokens de uma expressão.
-    Útil para debug.
-    
-    Args:
-        expressao (str): A expressão a ser analisada
-    """
+
     lexico = AnalisadorLexico(expressao)
     tokens = []
     
@@ -284,16 +239,7 @@ def print_tokens(expressao):
 
 
 def validar_expressao(expressao, debug=False):
-    """
-    Valida se uma expressão de lógica proposicional está correta léxica e sintaticamente.
-    
-    Args:
-        expressao (str): A expressão a ser validada
-        debug (bool): Se True, imprime informações de debug
-        
-    Returns:
-        bool: True se a expressão for válida, False caso contrário
-    """
+
     # Para evitar problemas com expressões vazias
     if not expressao or expressao.isspace():
         if debug:
@@ -326,16 +272,7 @@ def validar_expressao(expressao, debug=False):
 
 
 def teste_expressao(expressao, mostrar_tokens=True):
-    """
-    Testa se uma expressão é válida e imprime o resultado.
-    
-    Args:
-        expressao (str): A expressão a ser testada
-        mostrar_tokens (bool): Se True, imprime os tokens da expressão
-    
-    Returns:
-        bool: True se a expressão for válida, False caso contrário
-    """
+
     print(f"\nTestando expressão: '{expressao}'")
     
     if mostrar_tokens:
@@ -352,9 +289,7 @@ def teste_expressao(expressao, mostrar_tokens=True):
 
 
 def main():
-    """
-    Função principal que lê o arquivo de entrada e valida cada expressão.
-    """
+
     # Verifica se foi fornecido um arquivo
     if len(sys.argv) < 2:
         print("Uso: python analisador_lexico.py <arquivo> [--debug] [--teste]")
