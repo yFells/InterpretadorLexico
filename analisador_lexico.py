@@ -1,3 +1,5 @@
+#GRUPO RA1 12 - Eduarda Dallagrana Batista, Felipe de Lima dos Santos, Kaua da Silva Nunes
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
